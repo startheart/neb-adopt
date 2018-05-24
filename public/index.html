@@ -11,6 +11,49 @@
     <noscript>
       <strong>We're sorry but neb-adopt doesn't work properly without JavaScript enabled. Please enable it to continue.</strong>
     </noscript>
+    <script src="http://wxapi.fishiny.com/static/nebPay.js"></script>
+    <script src="http://crawler-img-test.oss-cn-beijing.aliyuncs.com/nebulas-main.js"></script>
+    <script>
+        var NebPay = require("nebpay");
+        var Nebulas = require("nebulas");
+        var Neb = Nebulas.Neb;
+        var HttpRequest = Nebulas.HttpRequest;
+        var Account = Nebulas.Account;
+        var Transaction = Nebulas.Transaction;
+        var Unit = Nebulas.Unit;
+
+        var constract_addr = 'n1gfBj3EsTNLykwa57swnuKxXUm2ZrZz1qZ'
+
+        var neb = new Neb();
+        var nas_rate = 1000000000000000000;
+        //neb.setRequest(new HttpRequest("https://testnet.nebulas.io"));
+        neb.setRequest(new HttpRequest("https://mainnet.nebulas.io"));
+
+        //var glob_chainID = 1001;
+
+        var glob_chainID = 1;
+        Date.prototype.format = function(fmt) {
+            var o = {
+                "M+": this.getMonth() + 1, //月份
+                "d+": this.getDate(), //日
+                "h+": this.getHours(), //小时
+                "m+": this.getMinutes(), //分
+                "s+": this.getSeconds(), //秒
+                "q+": Math.floor((this.getMonth() + 3) / 3), //季度
+                "S": this.getMilliseconds() //毫秒
+            };
+            if (/(y+)/.test(fmt)) {
+                fmt = fmt.replace(RegExp.$1, (this.getFullYear() + "").substr(4 - RegExp.$1.length));
+            }
+            for (var k in o) {
+                if (new RegExp("(" + k + ")").test(fmt)) {
+                    fmt = fmt.replace(RegExp.$1, (RegExp.$1.length == 1) ? (o[k]) : (("00" + o[k]).substr(("" + o[k]).length)));
+                }
+            }
+            return fmt;
+        }
+    </script>
+
     <div id="app"></div>
     <!-- built files will be auto injected -->
   </body>
