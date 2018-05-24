@@ -1,11 +1,15 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import Home from './views/Home.vue'
-import About from './views/About.vue'
+import Home from './views/Home'
+import About from './views/About'
+
+// const Home = r => require.ensure([], () => r(require('@/views/Home')), 'Home')
+// const About = r => require.ensure([], () => r(require('@/views/About')), 'About')
 
 Vue.use(Router)
 
-export default new Router({
+const router = new Router({
+  mode: 'history',
   routes: [
     {
       path: '/',
@@ -19,3 +23,10 @@ export default new Router({
     }
   ]
 })
+
+router.beforeEach((to, from, next) => {
+  // getWxUserInfo
+  next()
+})
+
+export default router
