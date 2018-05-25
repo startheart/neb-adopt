@@ -34,7 +34,7 @@ Adoption.prototype = {
     },
 
     adopt: function (petId) {
-      petId = petId.trim();
+      petId = petId + '';
 
       if (petId === ""){
           throw new Error("empty petId");
@@ -57,7 +57,7 @@ Adoption.prototype = {
     },
 
     get: function (petId) {
-        petId = petId.trim();
+        petId = petId + '';
         if ( petId === "" ) {
             throw new Error("empty petId")
         }

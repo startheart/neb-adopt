@@ -5,14 +5,14 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width,initial-scale=1.0">
     <link rel="icon" href="<%= BASE_URL %>favicon.ico">
-    <title>neb-adopt</title>
+    <title>Neb Pet Shop</title>
   </head>
   <body>
     <noscript>
       <strong>We're sorry but neb-adopt doesn't work properly without JavaScript enabled. Please enable it to continue.</strong>
     </noscript>
-    <script src="http://wxapi.fishiny.com/static/nebPay.js"></script>
-    <script src="http://crawler-img-test.oss-cn-beijing.aliyuncs.com/nebulas-main.js"></script>
+    <script src="<%= BASE_URL %>nebPay.js"></script>
+    <script src="<%= BASE_URL %>nebulas.js"></script>
     <script>
         var NebPay = require("nebpay");
         var Nebulas = require("nebulas");
@@ -22,12 +22,16 @@
         var Transaction = Nebulas.Transaction;
         var Unit = Nebulas.Unit;
 
-        var constract_addr = 'n1gfBj3EsTNLykwa57swnuKxXUm2ZrZz1qZ'
+        var nebPay = new NebPay()
+        var DappAddress = 'n1eDd7vVnoSZrwSdGhfJkv3frZP7dtQ4yxc'
 
         var neb = new Neb();
         var nas_rate = 1000000000000000000;
-        //neb.setRequest(new HttpRequest("https://testnet.nebulas.io"));
-        neb.setRequest(new HttpRequest("https://mainnet.nebulas.io"));
+
+        // var nebChainUrl = 'https://mainnet.nebulas.io'
+        var nebChainUrl = 'https://testnet.nebulas.io'
+
+        neb.setRequest(new HttpRequest(nebChainUrl));
 
         //var glob_chainID = 1001;
 
@@ -53,6 +57,7 @@
             return fmt;
         }
     </script>
+     <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
 
     <div id="app"></div>
     <!-- built files will be auto injected -->
